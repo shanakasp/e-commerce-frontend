@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
+import { AuthGuard } from "./_auth/auth.guard";
 import { AddNewProductComponent } from "./add-new-product/add-new-product.component";
 import { AdminComponent } from "./admin/admin.component";
 import { BuyProductResolverService } from "./buy-product-resolver.service";
@@ -16,29 +17,32 @@ import { ProductViewDetailsComponent } from "./product-view-details/product-view
 import { RegisterComponent } from "./register/register.component";
 import { ShowProductDetailsComponent } from "./show-product-details/show-product-details.component";
 import { UserComponent } from "./user/user.component";
-import { AuthGuard } from "./_auth/auth.guard";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "", component: HomeComponent, data: { title: "Home" } },
   {
     path: "admin",
     component: AdminComponent,
     canActivate: [AuthGuard],
-    data: { roles: ["Admin"] },
+    data: { roles: ["Admin"], title: "Admin" },
   },
   {
     path: "user",
     component: UserComponent,
     canActivate: [AuthGuard],
-    data: { roles: ["User"] },
+    data: { roles: ["User"], title: "User" },
   },
-  { path: "login", component: LoginComponent },
-  { path: "forbidden", component: ForbiddenComponent },
+  { path: "login", component: LoginComponent, data: { title: "Login" } },
+  {
+    path: "forbidden",
+    component: ForbiddenComponent,
+    data: { title: "Forbidden" },
+  },
   {
     path: "addNewProduct",
     component: AddNewProductComponent,
     canActivate: [AuthGuard],
-    data: { roles: ["Admin"] },
+    data: { roles: ["Admin"], title: "Add New Product" },
     resolve: {
       product: ProductResolveService,
     },
@@ -47,13 +51,13 @@ const routes: Routes = [
     path: "showProductDetails",
     component: ShowProductDetailsComponent,
     canActivate: [AuthGuard],
-    data: { roles: ["Admin"] },
+    data: { roles: ["Admin"], title: "Product Details" },
   },
   {
     path: "orderInformation",
     component: OrderDetailsComponent,
     canActivate: [AuthGuard],
-    data: { roles: ["Admin"] },
+    data: { roles: ["Admin"], title: "Order Information" },
   },
   {
     path: "productViewDetails",
@@ -64,7 +68,7 @@ const routes: Routes = [
     path: "buyProduct",
     component: BuyProductComponent,
     canActivate: [AuthGuard],
-    data: { roles: ["User"] },
+    data: { roles: ["User"], title: "Buy Product" },
     resolve: {
       productDetails: BuyProductResolverService,
     },
@@ -73,28 +77,29 @@ const routes: Routes = [
     path: "cart",
     component: CartComponent,
     canActivate: [AuthGuard],
-    data: { roles: ["User"] }
+    data: { roles: ["User"], title: "Shopping Cart" },
   },
   {
-    path:"orderConfirm",
+    path: "orderConfirm",
     component: OrderConfirmationComponent,
     canActivate: [AuthGuard],
-    data: { roles: ["User"] }
+    data: { roles: ["User"], title: "Order Confirmation" },
   },
   {
-    path:"myOrders",
+    path: "myOrders",
     component: MyOrdersComponent,
     canActivate: [AuthGuard],
-    data: { roles: ["User"] }
+    data: { roles: ["User"], title: "My Orders" },
   },
   {
     path: "register",
-    component: RegisterComponent
-  }
+    component: RegisterComponent,
+    data: { title: "Register" },
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: "reload" })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
