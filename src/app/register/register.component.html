@@ -1,50 +1,78 @@
 <div class="container mt-5">
-    <div class="card" style="padding: 20px;">
-        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Username</mat-label>
-                <input matInput
-                       ngModel
-                       name="userName"
-                       id="userName"
-                       placeholder="Username">
-                <mat-hint>Username</mat-hint>
-            </mat-form-field>
+  <div style="display: flex; justify-content: center">
+    <img
+      src="assets/image5.png"
+      alt="Image Description"
+      style="width: 500px; max-height: 350px"
+    />
+  </div>
+  <div class="card" style="padding: 20px">
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label style="color: darkorchid">Username</mat-label>
+        <input
+          matInput
+          ngModel
+          name="userName"
+          id="userName"
+          placeholder="Username"
+        />
+        <mat-hint>
+          <span style="color: darkorchid">Username</span>
+        </mat-hint>
+      </mat-form-field>
 
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Firstname</mat-label>
-                <input matInput
-                       ngModel
-                       name="userFirstName"
-                       id="userFirstName"
-                       placeholder="Firstname">
-                <mat-hint>Firstname</mat-hint>
-            </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label style="color: darkorchid">Firstname</mat-label>
+        <input
+          matInput
+          ngModel
+          name="userFirstName"
+          id="userFirstName"
+          placeholder="Firstname"
+        />
+        <mat-hint>
+          <span style="color: darkorchid">Firstname</span>
+        </mat-hint>
+      </mat-form-field>
 
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Lastname</mat-label>
-                <input matInput
-                       ngModel
-                       name="userLastName"
-                       id="userLastName"
-                       placeholder="Lastname">
-                <mat-hint>Lastname</mat-hint>
-            </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label style="color: darkorchid">Lastname</mat-label>
+        <input
+          matInput
+          ngModel
+          name="userLastName"
+          id="userLastName"
+          placeholder="Lastname"
+        />
+        <mat-hint>
+          <span style="color: darkorchid">Lastname</span>
+        </mat-hint>
+      </mat-form-field>
 
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Password</mat-label>
-                <input matInput
-                       ngModel
-                       name="userPassword"
-                       id="userPassword"
-                       placeholder="Password">
-                <mat-hint>Password</mat-hint>
-            </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label style="color: darkorchid">Password</mat-label>
+        <input
+          matInput
+          ngModel
+          name="userPassword"
+          id="userPassword"
+          placeholder="Password"
+        />
+        <mat-hint>
+          <span style="color: darkorchid">Password</span>
+        </mat-hint>
+      </mat-form-field>
 
-            <div class="text-center">
-                <button type="submit" mat-raised-button color="primary">Register</button>
-            </div>
-            
-        </form>
-    </div>
+      <div class="text-center">
+        <button
+          type="submit"
+          mat-raised-button
+          style="background-color: #590577"
+        >
+          <span style="color: white">Register</span>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

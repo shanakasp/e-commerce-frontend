@@ -13,20 +13,21 @@ import { ProductService } from '../_services/product.service';
 })
 export class HomeComponent implements OnInit {
 
-  pageNumber: number = 0;
+  pageNumber = 0;
 
   productDetails = [];
 
   showLoadButton = false;
 
   constructor(private productService: ProductService,
-    private imageProcessingService: ImageProcessingService,
-    private router: Router) { }
+              private imageProcessingService: ImageProcessingService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.getAllProducts();
   }
 
+  // tslint:disable-next-line:typedef
   searchByKeyword(searchkeyword) {
     console.log(searchkeyword);
     this.pageNumber = 0;
@@ -34,7 +35,8 @@ export class HomeComponent implements OnInit {
     this.getAllProducts(searchkeyword);
   }
 
-  public getAllProducts(searchKey: string = "") {
+  // tslint:disable-next-line:typedef
+  public getAllProducts(searchKey: string = '') {
     this.productService.getAllProducts(this.pageNumber, searchKey)
     .pipe(
       map((x: Product[], i) => x.map((product: Product) => this.imageProcessingService.createImages(product)))
@@ -42,11 +44,8 @@ export class HomeComponent implements OnInit {
     .subscribe(
       (resp: Product[]) => {
         console.log(resp);
-        if(resp.length == 12) {
-          this.showLoadButton = true;
-        } else {
-          this.showLoadButton = false;
-        }
+        // tslint:disable-next-line:triple-equals
+        this.showLoadButton = resp.length == 12;
         resp.forEach(p => this.productDetails.push(p));
       }, (error: HttpErrorResponse) => {
         console.log(error);
@@ -54,12 +53,14 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  // tslint:disable-next-line:typedef
   public loadMoreProduct() {
     this.pageNumber = this.pageNumber + 1;
     this.getAllProducts();
   }
 
+  // tslint:disable-next-line:typedef
   showProductDetails(productId) {
-    this.router.navigate(['/productViewDetails', {productId: productId}]);
+    this.router.navigate(['/productViewDetails', {productId}]);
   }
 }

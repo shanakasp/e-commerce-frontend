@@ -1,22 +1,77 @@
-<mat-toolbar color="primary">
-  <span>
-    E-Commerce Application
+<mat-toolbar
+  style="background-color: #590577"
+  xmlns="http://www.w3.org/1999/html"
+>
+  <span style="color: #ffffff">
+    <b>P R I M O G</b>
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFRaU_AFZIqHkeaQlfbMc3NVJGk7aQKO4E7h9Nrea73fk-cI_OXFMFPqB1yqHm_tiGDzw&usqp=CAU"
+      alt="E-commerce Image"
+      style="max-width: 100%; height: 60px; padding-left: 30px"
+    />
   </span>
 
   <span class="space-buttons"></span>
-  <button *ngIf="! isLoggedIn()" routerLink="/login" mat-raised-button color="primary">
-    Login
+  <button
+    *ngIf="!isLoggedIn()"
+    routerLink="/login"
+    mat-raised-button
+    style="background-color: white"
+  >
+    <span style="color: #590577"> Login</span>
   </button>
-  <button *ngIf="isLoggedIn()" (click)="logout()" mat-raised-button color="warn">
-    Logout
+  <button
+    *ngIf="isLoggedIn()"
+    (click)="logout()"
+    mat-raised-button
+    style="background-color: white"
+  >
+    <span style="color: #590577">Logout</span>
   </button>
 </mat-toolbar>
 
-<mat-toolbar color="primary" *ngIf="isLoggedIn()">
-  <button mat-raised-button color="primary" routerLink="/">Home</button>
-  <button *ngIf="!isAdmin()" mat-raised-button color="primary" routerLink="/cart">Cart</button>
-  <button *ngIf="!isAdmin()" mat-raised-button color="primary" routerLink="/myOrders">My Orders</button>
-  <button *ngIf="isAdmin()" mat-raised-button color="primary" routerLink="/addNewProduct">Add New Product</button>
-  <button *ngIf="isAdmin()" mat-raised-button color="primary" routerLink="/showProductDetails">Show Product Details</button>
-  <button *ngIf="isAdmin()" mat-raised-button color="primary" routerLink="/orderInformation">Order Information</button>
+<mat-toolbar style="background-color: #ff93ac" *ngIf="isLoggedIn()">
+  <button mat-raised-button style="background-color: #590577" routerLink="/">
+    <span style="color: white">Home</span></button
+  >&nbsp;
+  <button
+    *ngIf="!isAdmin()"
+    mat-raised-button
+    style="background-color: white"
+    routerLink="/cart"
+  >
+    <span style="color: #590577">Cart</span></button
+  >&nbsp;
+  <button
+    *ngIf="!isAdmin()"
+    mat-raised-button
+    style="background-color: white"
+    routerLink="/myOrders"
+  >
+    <span style="color: #590577">My Orders</span></button
+  >&nbsp;
+  <button
+    *ngIf="isAdmin()"
+    mat-raised-button
+    style="background-color: white"
+    routerLink="/addNewProduct"
+  >
+    <span style="color: #590577">Add New Product</span></button
+  >&nbsp;
+  <button
+    *ngIf="isAdmin()"
+    mat-raised-button
+    style="background-color: white"
+    routerLink="/showProductDetails"
+  >
+    <span style="color: #590577">Show Product Details</span></button
+  >&nbsp;
+  <button
+    *ngIf="isAdmin()"
+    mat-raised-button
+    style="background-color: white"
+    routerLink="/orderInformation"
+  >
+    <span style="color: #590577">Order Information</span>
+  </button>
 </mat-toolbar>
